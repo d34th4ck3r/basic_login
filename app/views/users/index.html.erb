@@ -1,0 +1,8 @@
+<%if user_signed_in?%>
+Signed In
+<br/>
+<%= link_to "Sign Out",destroy_user_session_path , :method=>:delete, :class=>'topright1'%>
+<% else %>
+<%= render :file => 'devise/registrations/new' %>
+Signed out
+<% end %>

@@ -1,0 +1,3 @@
+Created a Basic Application with the ability to Sign UP and Sign In using Devise.
+
+
