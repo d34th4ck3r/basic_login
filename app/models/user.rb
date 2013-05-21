@@ -6,6 +6,11 @@ class User
   devise :database_authenticatable, :registerable,:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  attr_accessible :avatar, :avatar_cache
+
+
+  mount_uploader :avatar, AvatarUploader
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
