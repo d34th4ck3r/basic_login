@@ -6,8 +6,8 @@ class User
   devise :database_authenticatable, :registerable,:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  attr_accessible :avatar, :avatar_cache
+  field :avatar, :type=> String
+  field :avatar_cache, :type=>String
 
 
   mount_uploader :avatar, AvatarUploader
@@ -45,4 +45,14 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  def send_on_create_confirmation_instructions
+    Devise::Mailer.delay.confirmation_instructions(self)
+  end
+  def send_reset_password_instructions
+    Devise::Mailer.delay.reset_password_instructions(self)
+  end
+  def send_unlock_instructions
+    Devise::Mailer.delay.unlock_instructions(self)
+  end
 end
